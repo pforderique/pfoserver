@@ -4,11 +4,13 @@ from flask_restful import Api
 #from apis import User
 import sys
 sys.path.append("/home/pi/pfoserver2/apis")
-
-from airchat import User
+from config import SECRET_KEY, MONGO_URI
 
 app = Flask(__name__)
-#app.config['SECRET_KEY'] = SECRET_KEY
+app.config['SECRET_KEY'] = SECRET_KEY
+app.config['MONGO_URI'] = MONGO_URI
+
+from airchat import User
 
 api = Api(app)
 api.add_resource(User, "/user/", "/user/<id>")
