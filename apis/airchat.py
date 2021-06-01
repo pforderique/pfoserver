@@ -1,5 +1,5 @@
-from flask import jsonify, request
-from flask_restful import Resource, reqparse, abort, fields, marshal_with
+#from flask import jsonify, request
+#from flask_restful import Resource, reqparse, abort, fields, marshal_with
 # from bson.objectid import ObjectId
 # from pymongo import MongoClient
 # from .config import MONGO_URI
@@ -10,16 +10,16 @@ from flask_restful import Resource, reqparse, abort, fields, marshal_with
 # users = airchat_db['users']
 
 #? PARSE FORM! -- like parse_form() method in AirPiano I made, it does it easily
-user_put_args = reqparse.RequestParser()
-user_put_args.add_argument("name", type=str, help="Name is required", required=True)
-user_put_args.add_argument("age", type=int, help="Age is required", required=True)
-user_put_args.add_argument("followers", type=int, help="follower count is required", required=True) # else defaulted to None if not required
+#user_put_args = reqparse.RequestParser()
+#user_put_args.add_argument("name", type=str, help="Name is required", required=True)
+#user_put_args.add_argument("age", type=int, help="Age is required", required=True)
+#user_put_args.add_argument("followers", type=int, help="follower count is required", required=True) # else defaulted to None if not required
 
 #? PARSE FORM! -- all optional paramaters -- 'None' if not given
-video_update_args = reqparse.RequestParser()
-video_update_args.add_argument("name", type=str, help="Name of the video is required")
-video_update_args.add_argument("views", type=int, help="Views of the video is required")
-video_update_args.add_argument("likes", type=int, help="Likes on the video is required") # else defaulted to None if not required
+#video_update_args = reqparse.RequestParser()
+#video_update_args.add_argument("name", type=str, help="Name of the video is required")
+#video_update_args.add_argument("views", type=int, help="Views of the video is required")
+#video_update_args.add_argument("likes", type=int, help="Likes on the video is required") # else defaulted to None if not required
 
 user_resource_fields = {
 	'_id': fields.String,
@@ -27,9 +27,10 @@ user_resource_fields = {
     'age':fields.Integer,
     'followers':fields.Integer,
 }
-
-class User(Resource):
+class User():
     pass
+#class User(Resource):
+ #   pass
     # # serialize this return value (object) using these resource fields: 
     # @marshal_with(user_resource_fields) 
     # def get(self, id:str):
