@@ -9,6 +9,7 @@ from airchat import User
 
 app = Flask(__name__)
 #app.config['SECRET_KEY'] = SECRET_KEY
+app.config["MONGO_CONNECT"] = False
 
 api = Api(app)
 api.add_resource(User, "/user/", "/user/<id>")

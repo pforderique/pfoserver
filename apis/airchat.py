@@ -33,8 +33,8 @@ class User(Resource):
     @marshal_with(user_resource_fields) 
     def get(self, id:str):
         #return "nice! issue with mongo thens"
-        result = users.find_one({"_id":ObjectId(id)})
-
+        #result = [user for user in users.find({"_id":ObjectId(id)})][0]
+        result = "not sure why this doesnt work on actualy webserver :(("
         if not result:
             abort(404, message="404 error - could not find user with that id")
 
