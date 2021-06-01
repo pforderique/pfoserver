@@ -1,11 +1,13 @@
 from flask import jsonify, request
 from flask_restful import Resource, reqparse, abort, fields, marshal_with
 from bson.objectid import ObjectId
-from flask_pymongo import PyMongo
+from pymongo import MongoClient
 from config import MONGO_URI
 
-airchat_mongo = PyMongo(MONGO_URI)
-users = airchat_mongo.db.users
+cluster = MongoClient(MONGO_URI)
+airchat_db = cluster['airchat']
+
+users = airchat_db['users']
 
 #? PARSE FORM! -- like parse_form() method in AirPiano I made, it does it easily
 #user_put_args = reqparse.RequestParser()
