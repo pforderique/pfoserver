@@ -1,15 +1,15 @@
 from flask import Flask, jsonify, request, render_template
 from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from pymongo import MongoClient
-from config import SECRET_KEY, MONGO_URI, CLUSTER_NAME
+from config import SECRET_KEY, MONGO_URI
 from apis.airchat import wassup
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 cluster = MongoClient(MONGO_URI)
 
-db = cluster[CLUSTER_NAME]
-users = db['users']
+airchat_db = cluster['airchat']
+users = airchat_db['users']
 
 @app.route("/")
 def index():
