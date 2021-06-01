@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from flask_restful import Resource, reqparse, abort, fields, marshal_with
 from bson.objectid import ObjectId
-from pymongo import MongoClient, message
+from pymongo import MongoClient
 from .config import MONGO_URI
 
 cluster = MongoClient(MONGO_URI)
