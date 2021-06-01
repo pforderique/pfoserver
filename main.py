@@ -1,10 +1,10 @@
 from flask import Flask, jsonify, request, render_template
 from flask_restful import Api
-from config import SECRET_KEY, MONGO_URI
 #from apis.config import SECRET_KEY
 #from apis import User
 import sys
 sys.path.append("/home/pi/pfoserver2/apis")
+from config import SECRET_KEY, MONGO_URI
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
