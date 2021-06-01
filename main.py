@@ -5,13 +5,13 @@ from flask_restful import Api
 import sys
 sys.path.append("/home/pi/pfoserver2/apis")
 
-#import airchat
+from airchat import User
 
 app = Flask(__name__)
 #app.config['SECRET_KEY'] = SECRET_KEY
 
 api = Api(app)
-#api.add_resource(User, "/user/", "/user/<id>")
+api.add_resource(User, "/user/", "/user/<id>")
 
 @app.route("/")
 def index():
