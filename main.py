@@ -1,10 +1,10 @@
 from flask import Flask, jsonify, request, render_template
 from flask_restful import Api
-from apis.config import SECRET_KEY
-from apis import User
+#from apis.config import SECRET_KEY
+#from apis import User
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = SECRET_KEY
+#app.config['SECRET_KEY'] = SECRET_KEY
 
 api = Api(app)
 #api.add_resource(User, "/user/", "/user/<id>")
