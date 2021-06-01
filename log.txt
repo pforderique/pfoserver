@@ -1,0 +1,2 @@
+Had to run "sudo pip3 install flask_pymongo" to avoid server to crash. 
+For now will stick to this, however next time just make a venv bro
