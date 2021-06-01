@@ -4,10 +4,10 @@ from bson.objectid import ObjectId
 from pymongo import MongoClient
 from .config import MONGO_URI
 
-# cluster = MongoClient(MONGO_URI)
-# airchat_db = cluster['airchat']
+cluster = MongoClient(MONGO_URI)
+airchat_db = cluster['airchat']
 
-# users = airchat_db['users']
+users = airchat_db['users']
 
 #? PARSE FORM! -- like parse_form() method in AirPiano I made, it does it easily
 #user_put_args = reqparse.RequestParser()
@@ -21,24 +21,23 @@ from .config import MONGO_URI
 #video_update_args.add_argument("views", type=int, help="Views of the video is required")
 #video_update_args.add_argument("likes", type=int, help="Likes on the video is required") # else defaulted to None if not required
 
-#user_resource_fields = {
-#	'_id': fields.String,
-#	'name': fields.String,
-#    'age':fields.Integer,
-#    'followers':fields.Integer,
-#}
+user_resource_fields = {
+	'_id': fields.String,
+	'name': fields.String,
+   'age':fields.Integer,
+   'followers':fields.Integer,
+}
 
 class User(Resource):
-    pass
-    # # serialize this return value (object) using these resource fields: 
-    # @marshal_with(user_resource_fields) 
-    # def get(self, id:str):
-    #     result = users.find_one({"_id":ObjectId(id)})
+    # serialize this return value (object) using these resource fields: 
+    @marshal_with(user_resource_fields) 
+    def get(self, id:str):
+        result = users.find_one({"_id":ObjectId(id)})
 
-    #     if not result:
-    #         abort(404, message="404 error - could not find user with that id")
+        if not result:
+            abort(404, message="404 error - could not find user with that id")
 
-    #     return result, 200
+        return result, 200
 
     # #* PUT takes in identifier and creates or updates info based on it
     # @marshal_with(user_resource_fields) 
