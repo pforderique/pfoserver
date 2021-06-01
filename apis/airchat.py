@@ -1,13 +1,13 @@
 from flask import jsonify, request
 from flask_restful import Resource, reqparse, abort, fields, marshal_with
-from bson.objectid import ObjectId
-from pymongo import MongoClient
-from .config import MONGO_URI
+# from bson.objectid import ObjectId
+# from pymongo import MongoClient
+# from .config import MONGO_URI
 
-cluster = MongoClient(MONGO_URI)
-airchat_db = cluster['airchat']
+# cluster = MongoClient(MONGO_URI)
+# airchat_db = cluster['airchat']
 
-users = airchat_db['users']
+# users = airchat_db['users']
 
 #? PARSE FORM! -- like parse_form() method in AirPiano I made, it does it easily
 user_put_args = reqparse.RequestParser()
@@ -29,41 +29,42 @@ user_resource_fields = {
 }
 
 class User(Resource):
-    # serialize this return value (object) using these resource fields: 
-    @marshal_with(user_resource_fields) 
-    def get(self, id:str):
-        result = users.find_one({"_id":ObjectId(id)})
+    pass
+    # # serialize this return value (object) using these resource fields: 
+    # @marshal_with(user_resource_fields) 
+    # def get(self, id:str):
+    #     result = users.find_one({"_id":ObjectId(id)})
 
-        if not result:
-            abort(404, message="404 error - could not find user with that id")
+    #     if not result:
+    #         abort(404, message="404 error - could not find user with that id")
 
-        return result, 200
+    #     return result, 200
 
-    #* PUT takes in identifier and creates or updates info based on it
-    @marshal_with(user_resource_fields) 
-    def put(self, id:str):
-        args = user_put_args.parse_args()
+    # #* PUT takes in identifier and creates or updates info based on it
+    # @marshal_with(user_resource_fields) 
+    # def put(self, id:str):
+    #     args = user_put_args.parse_args()
 
-        result = users.find_one({"_id":ObjectId(id)})
+    #     result = users.find_one({"_id":ObjectId(id)})
 
-        if result:
-            users.replace_one({'_id':ObjectId(id)}, args)
-        else:
-            users.insert_one(args)
+    #     if result:
+    #         users.replace_one({'_id':ObjectId(id)}, args)
+    #     else:
+    #         users.insert_one(args)
 
-        result = users.find_one({"_id":ObjectId(id)})
+    #     result = users.find_one({"_id":ObjectId(id)})
         
-        return result, 201 # 201 means created
+    #     return result, 201 # 201 means created
 
-    #* POST autogenerate an ID for em
-    @marshal_with(user_resource_fields) 
-    def post(self):
-        args = user_put_args.parse_args()
-        _id = users.insert_one(args).inserted_id # returns ObjectId("...")
+    # #* POST autogenerate an ID for em
+    # @marshal_with(user_resource_fields) 
+    # def post(self):
+    #     args = user_put_args.parse_args()
+    #     _id = users.insert_one(args).inserted_id # returns ObjectId("...")
         
-        result = users.find_one({"_id":_id})
+    #     result = users.find_one({"_id":_id})
 
-        return result, 201
+    #     return result, 201
 
     # @marshal_with(user_resource_fields)
     # def patch(self, video_id):
