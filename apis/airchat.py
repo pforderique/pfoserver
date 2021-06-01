@@ -1,8 +1,8 @@
-#from flask import jsonify, request
-#from flask_restful import Resource, reqparse, abort, fields, marshal_with
-# from bson.objectid import ObjectId
-# from pymongo import MongoClient
-# from .config import MONGO_URI
+from flask import jsonify, request
+from flask_restful import Resource, reqparse, abort, fields, marshal_with
+from bson.objectid import ObjectId
+from pymongo import MongoClient
+from .config import MONGO_URI
 
 # cluster = MongoClient(MONGO_URI)
 # airchat_db = cluster['airchat']
@@ -21,16 +21,15 @@
 #video_update_args.add_argument("views", type=int, help="Views of the video is required")
 #video_update_args.add_argument("likes", type=int, help="Likes on the video is required") # else defaulted to None if not required
 
-user_resource_fields = {
-	'_id': fields.String,
-	'name': fields.String,
-    'age':fields.Integer,
-    'followers':fields.Integer,
-}
-class User():
+#user_resource_fields = {
+#	'_id': fields.String,
+#	'name': fields.String,
+#    'age':fields.Integer,
+#    'followers':fields.Integer,
+#}
+
+class User(Resource):
     pass
-#class User(Resource):
- #   pass
     # # serialize this return value (object) using these resource fields: 
     # @marshal_with(user_resource_fields) 
     # def get(self, id:str):
