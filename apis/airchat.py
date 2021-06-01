@@ -4,10 +4,10 @@ from bson.objectid import ObjectId
 from pymongo import MongoClient
 from .config import MONGO_URI
 
-cluster = MongoClient(MONGO_URI)
-airchat_db = cluster['airchat']
+#cluster = MongoClient(MONGO_URI)
+#airchat_db = cluster['airchat']
 
-users = airchat_db['users']
+#users = airchat_db['users']
 
 #? PARSE FORM! -- like parse_form() method in AirPiano I made, it does it easily
 #user_put_args = reqparse.RequestParser()
@@ -30,14 +30,15 @@ user_resource_fields = {
 
 class User(Resource):
     # serialize this return value (object) using these resource fields: 
-    @marshal_with(user_resource_fields) 
+    # @marshal_with(user_resource_fields) 
     def get(self, id:str):
-        result = users.find_one({"_id":ObjectId(id)})
+        return "nice! issue with mongo thens"
+        # #result = users.find_one({"_id":ObjectId(id)})
 
-        if not result:
-            abort(404, message="404 error - could not find user with that id")
+        # if not result:
+        #     abort(404, message="404 error - could not find user with that id")
 
-        return result, 200
+        # return result, 200
 
     # #* PUT takes in identifier and creates or updates info based on it
     # @marshal_with(user_resource_fields) 
