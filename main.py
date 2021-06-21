@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request, render_template
-from .views import views
+from views import views
 
 import sys
 sys.path.append("/home/pi/pfoserver2/apis")
